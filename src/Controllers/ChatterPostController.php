@@ -9,12 +9,12 @@ use DevDojo\Chatter\Events\ChatterBeforeNewResponse;
 use DevDojo\Chatter\Mail\ChatterDiscussionUpdated;
 use DevDojo\Chatter\Models\Models;
 use Event;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as Controller;
 use Illuminate\Support\Facades\Mail;
 use Purifier;
 use Validator;
-use User;
 
 use App\Mail\NotificationEmail;
 
