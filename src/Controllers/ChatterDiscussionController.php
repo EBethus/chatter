@@ -47,7 +47,7 @@ class ChatterDiscussionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(DiscussionRequest $request)
+    public function store(DiscussionRequest $request, \App\Setting $settings)
     {
         Event::dispatch(new ChatterBeforeNewDiscussion($request));
         if (function_exists('chatter_before_new_discussion')) {
@@ -89,6 +89,7 @@ class ChatterDiscussionController extends Controller
             'title'               => $request->title,
             'chatter_category_id' => $request->chatter_category_id,
             'user_id'             => $user_id,
+            'whitebrand_id'       => $settings->getId(),
             'slug'                => $slug,
             'color'               => $request->color,
             ];

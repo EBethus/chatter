@@ -2,6 +2,7 @@
 
 namespace DevDojo\Chatter\Models;
 
+use App\Scopes\DiscussionScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,8 +12,13 @@ class Discussion extends Model
     
     protected $table = 'chatter_discussion';
     public $timestamps = true;
-    protected $fillable = ['title', 'chatter_category_id', 'user_id', 'slug', 'color'];
+    protected $fillable = ['title', 'chatter_category_id', 'user_id','whitebrand_id', 'slug', 'color'];
     protected $dates = ['deleted_at', 'last_reply_at'];
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new DiscussionScope);
+    }
 
     public function user()
     {

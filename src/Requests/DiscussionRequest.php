@@ -49,7 +49,9 @@ class DiscussionRequest extends FormRequest
         return [
             'title'               => 'required|min:5|max:255',
             'body'                => 'required|min:10',
-            'chatter_category_id' => 'required'
+            'chatter_category_id' => 'required',
+            'whitebrand_id'       => ''
+            
         ];
     }
 
