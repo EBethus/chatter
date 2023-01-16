@@ -70,7 +70,7 @@ class ChatterDiscussionController extends Controller
         }
 
         // *** Let's gaurantee that we always have a generic slug *** //
-        $slug = str_slug($request->title, '-');
+        $slug = \Str::slug($request->title, '-');
 
         $discussion_exists = Models::discussion()->where('slug', '=', $slug)->withTrashed()->first();
         $incrementer = 1;

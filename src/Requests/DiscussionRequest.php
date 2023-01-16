@@ -46,13 +46,17 @@ class DiscussionRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'title'               => 'required|min:5|max:255',
             'body'                => 'required|min:10',
             'chatter_category_id' => 'required',
-            'whitebrand_id'       => ''
+            'whitebrand_id'       => '',
             
         ];
+        if (\Config::get('chatter.security.captcha')) {
+            $rules['g-recaptcha-response'] = 'required|captcha';
+        }
+        return $rules;
     }
 
     public function messages()
