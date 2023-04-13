@@ -1,6 +1,6 @@
 {
-    "name": "ashrey/chatter-vivetix",
-   "description": "A simple forum package for your laravel 6+ app ",
+    "name": "ebethus/chatter-vivetix",
+   "description": "A simple forum package for your laravel 8+ app ",
     "authors": [
         {
             "name": "Tony Lea",
@@ -13,16 +13,15 @@
         }
     ],
     "require": {
-        "ebethus/laravel-spamscore": "dev-master",
         "mews/purifier": "~3.0",
         "masterminds/html5": "2.*"
     },
 
     "require-dev": {
-        "illuminate/cache": "^6.0",
-        "illuminate/console": "^6.0",
+        "illuminate/cache": "^8.0",
+        "illuminate/console": "^8.0",
         "mockery/mockery": "^1.3.1",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
