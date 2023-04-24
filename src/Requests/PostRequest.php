@@ -24,19 +24,6 @@ class PostRequest extends FormRequest
         return true;
     }
 
-    public function withValidator($validator)
-    {
-        $req = $this;
-        $validator->after(function ($validator) use ($req) {
-            $score = SpamScore::score("{$req->body}");
-            if ($score > 99) {
-                 return $validator
-                    ->errors()
-                    ->add('token', __('Hemos detectado que este post puediera ser spam, si no lo fuera por favor contáctanos'));
-            }
-        });
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -44,9 +31,15 @@ class PostRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'body' => 'required|min:10',
         ];
+
+        if (\Config::get('chatter.security.captcha')) {
+            $rules['g-recaptcha-response'] = 'required|captcha';
+        }
+
+        return $rules;
     }
 
     public function messages()

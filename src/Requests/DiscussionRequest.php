@@ -26,19 +26,6 @@ class DiscussionRequest extends FormRequest
         return true;
     }
 
-    public function withValidator($validator)
-    {
-        $req = $this;
-        $validator->after(function ($validator) use ($req) {
-            $score = SpamScore::score("{$req->title}");
-            if ($score > 99) {
-                 return $validator
-                    ->errors()
-                    ->add('token', __('Hemos detectado que este post puediera ser spam, si no lo fuera por favor contáctanos'));
-            }
-        });
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
