@@ -32,7 +32,11 @@ class PostRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'body' => 'required|min:10',
+            'body' => [ 
+                'required', 
+                'min:10', 
+                'regex:/(^[áéíóúÁÉÍÓÚñÑüÜçÇøØæÆßô\w\s¡!@#$%^&*()\[\]\\;\':\",.<>?¿{}|+-=–]*$)/'
+            ],
         ];
 
         if (\Config::get('chatter.security.captcha')) {

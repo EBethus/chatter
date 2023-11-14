@@ -146,7 +146,7 @@ class ChatterPostController extends Controller
     }
     private function sendEmailNotificationsAdmin($discussion)
     {
-        $users = User::whereJsonContains('roles', 'wbadmin')->get();
+        $users = User::whereJsonContains('roles', 'admin')->get();
         
         foreach ($users as $user) {
             $data = [
