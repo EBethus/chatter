@@ -34,8 +34,17 @@ class DiscussionRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'title'               => 'required|min:5|max:255',
-            'body'                => 'required|min:10',
+            'title'               => [
+                'required', 
+                'min:5', 
+                'max:255', 
+                'regex:/(^[áéíóúÁÉÍÓÚñÑüÜçÇøØæÆßô\w\s¡!@#$%^&*()\[\]\\;\':\",.<>?¿{}|+-=–]*$)/'
+            ],
+            'body'                => [ 
+                'required', 
+                'min:10', 
+                'regex:/(^[áéíóúÁÉÍÓÚñÑüÜçÇøØæÆßô\w\s¡!@#$%^&*()\[\]\\;\':\",.<>?¿{}|+-=–]*$)/'
+            ],
             'chatter_category_id' => 'required',
             'whitebrand_id'       => '',
             
